@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:text="参数设置"
+        android:text="Parameter Settings"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
@@ -54,7 +54,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="高速"
+        android:text="High speed"
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:textAlignment="center"
@@ -69,7 +69,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:text="道路模式"
+        android:text="Road mode"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRoadType" />
@@ -80,7 +80,7 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="手动"
+        android:text="Manual"
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@id/roadType_btn"
@@ -94,7 +94,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:text="方向微调"
+        android:text="Fine adjustment of direction"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_auto_adjust_direction" />
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textAlignment="center"
-        android:text="关闭"
+        android:text="Shut down"
         android:textColor="@color/white"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@id/roadType_btn"
@@ -118,7 +118,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:text="增强行人检测"
+        android:text="Enhanced pedestrian detection"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_person_focus" />
@@ -131,7 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
-        android:text="测试图片"
+        android:text="Test picture"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@id/param_btn"
         app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
@@ -198,7 +198,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:layout_marginStart="5dp"
-        android:text="目标检测重叠"
+        android:text="Object detection overlap"
         app:layout_constraintEnd_toEndOf="@+id/txtThresh"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button" />
@@ -223,7 +223,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="5dp"
-        android:text="目标告警阈值"
+        android:text="Target alarm threshold"
         app:layout_constraintTop_toBottomOf="@+id/txtNMS"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -248,7 +248,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="5dp"
-        android:text="报警时间间隔"
+        android:text="Alarm interval"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/txtThresh"
         app:layout_constraintStart_toStartOf="parent"
@@ -276,7 +276,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="5dp"
-        android:text="前方检测区域"
+        android:text="Front detection area"
         app:layout_constraintTop_toBottomOf="@+id/txtAlarm_time"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -303,7 +303,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="5dp"
-        android:text="检测区域宽度"
+        android:text="Detection area width"
 
         app:layout_constraintTop_toBottomOf="@+id/txtFront"
         app:layout_constraintStart_toStartOf="parent"
@@ -357,34 +357,34 @@
         app:layout_constraintStart_toStartOf="@id/imageView"
         app:layout_constraintEnd_toEndOf="@id/imageView" />
 
-    <Button
-        android:id="@+id/about_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="APP更新"
-        android:visibility="gone"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
+<!--    <Button-->
+<!--        android:id="@+id/about_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:text="APP更新"-->
+<!--        android:visibility="gone"-->
+<!--        android:textAllCaps="false"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/button"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />-->
 
-    <Button
-        android:id="@+id/zhangying_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:text="展映APP"
-        android:visibility="gone"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/about_btn"
-        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />
+<!--    <Button-->
+<!--        android:id="@+id/zhangying_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:text="展映APP"-->
+<!--        android:visibility="gone"-->
+<!--        android:textAllCaps="false"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/about_btn"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tool_bar" />-->
 
     <Button
         android:id="@+id/input_size_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:text="分辨率切换"
+        android:text="Resolution switching"
         android:visibility="gone"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/zhangying_btn"
@@ -395,7 +395,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:text="提示音开关"
+        android:text="Tone switch"
         android:visibility="gone"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/input_size_btn"
@@ -407,7 +407,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:text="相机权限"
+        android:text="Camera permissions"
         android:visibility="gone"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/switch_alarm_btn"
@@ -418,7 +418,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:text="激活高级功能"
+        android:text="Activate advanced features"
         android:visibility="gone"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/camera_btn"
@@ -429,7 +429,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:text="打赏"
+        android:text="Reward"
         android:visibility="gone"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/button"

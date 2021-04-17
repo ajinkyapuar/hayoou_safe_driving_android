@@ -194,7 +194,7 @@ public class SafeDetect {
 
                     break;
                 default:
-                    MainActivity.detect_msg = "未知";
+                    MainActivity.detect_msg = "Unknown";
                     break;
             }
             /*
@@ -269,15 +269,15 @@ public class SafeDetect {
 
                 switch (i){
                     case DETECT_ALARM_LEFT:
-                        MainActivity.detect_msg = "左边物体进入行驶区域";
+                        MainActivity.detect_msg = "The object on the left enters the driving area";
                         alarm_box(canvas,0,1,0);
                         break;
                     case DETECT_ALARM_RIGHT:
-                        MainActivity.detect_msg = "右边边物体进入行驶区域";
+                        MainActivity.detect_msg = "The object on the right enters the driving area";
                         alarm_box(canvas,0,0,1);
                         break;
                     case DETECT_ALARM_FRONT:
-                        MainActivity.detect_msg = "前方物体进入行驶区域";
+                        MainActivity.detect_msg = "The object ahead enters the driving area";
                         alarm_box(canvas,1,0,0);
                         break;
                 }
@@ -308,7 +308,9 @@ public class SafeDetect {
                             }
                         }
 
-                        MainActivity.detect_msg = "车道偏离：\n前方靠近左侧车道";
+
+//                        MainActivity.detect_msg = "Lane departure: \nAhead near the left lane";
+                        MainActivity.detect_msg = "Lane departure: \nLeft lane";
                         fix_direction_offset(1,0,limit_offset_x);
                         alarm_box(canvas,0,1,0);
                         break;
@@ -325,7 +327,8 @@ public class SafeDetect {
                             }
                         }
 
-                        MainActivity.detect_msg = "车道偏离：\n前方靠近右侧车道";
+//                        MainActivity.detect_msg = "Lane departure: \nAhead near the right lane";
+                        MainActivity.detect_msg = "Lane departure: \nRight lane";
                         fix_direction_offset(-1,0,limit_offset_x);
                         alarm_box(canvas,0,0,1);
                         break;

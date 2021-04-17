@@ -9,9 +9,9 @@ public class Box {
     public float x0,y0,x1,y1;
     public int label;
     private float score;
-    private static String[] labels={"行人", "自行车", "汽车", "摩托", "飞机", "巴士", "火车", "卡车", "船", "信号灯",
-            "fire hydrant", "停止标志", "停车收费表", "板凳", "鸟", "猫", "狗", "马", "羊", "牛",
-            "大象", "熊", "斑马", "长颈鹿", "背包", "雨伞", "手提包", "领带", "手提箱", "frisbee",
+    private static String[] labels={"pedestrian", "bicycle", "car", "motorcycle", "aircraft", "bus", "train", "truck", "ferry", "traffic light",
+            "fire hydrant", "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep", "cattle",
+            "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella", "handbag", "tie", "suitcase", "frisbee",
             "skis", "snowboard", "sports ball", "kite", "baseball bat", "baseball glove", "skateboard", "surfboard",
             "tennis racket", "bottle", "wine glass", "cup", "fork", "knife", "spoon", "bowl", "banana", "apple",
             "sandwich", "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair", "couch",

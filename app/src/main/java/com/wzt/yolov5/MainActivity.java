@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static int USE_MODEL = LANE_LSTR;
 
-    public static boolean USE_GPU = false;
+    public static boolean USE_GPU = true;
 
     public static CameraX.LensFacing CAMERA_ID = CameraX.LensFacing.BACK;
 
@@ -423,8 +423,8 @@ public class MainActivity extends AppCompatActivity {
         frontSeekBar.setProgress((int) (front_detect * 100));
         alarmWaitSeekBar.setProgress((int) (alarm_wait_time ));
         DetectWidthSeekBar.setProgress((int) ( (DetectWidth-0.2f)/1.8f *100));
-        final String format = "重叠: %.2f，阈值：%.2f";
-        final String format2 = "前方检测区域: %.2f";
+        final String format = "overlap: %.2f，threshold: %.2f";
+        final String format2 = "Front detection area: %.2f";
         tvFront.setText(String.format(Locale.ENGLISH, format2, front_detect));
         frontSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -446,15 +446,15 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        final String format4 = "检测区域宽度: %.2f";
+        final String format4 = "Detection area width: %.2f";
         tvDetectWidth.setText(String.format(Locale.ENGLISH, format4, DetectWidth));
         DetectWidthSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
                 if(advanced_func_key==0 || ! LSTR.advancedKeyCheck(advanced_func_key)){
-                    toast_msg("请获取高级权限");
-                    set_advanced_key();
+                    toast_msg("Please obtain advanced permissions.");
+//                    set_advanced_key();
                     return;
                 }
                 DetectWidth = 1.8f* i / 100.f + 0.2f ;
@@ -474,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        final String format3 = "报警时间间隔: %d S";
+        final String format3 = "Alarm interval: %d S";
         tvAlarmWait.setText(String.format(Locale.ENGLISH, format3, alarm_wait_time));
         alarmWaitSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -549,13 +549,13 @@ public class MainActivity extends AppCompatActivity {
         int soundid;
         switch (road_type){
             case 1:
-                road_text.setText("高速");
+                road_text.setText("high speed");
                 break;
             case 2:
-                road_text.setText("城市");
+                road_text.setText("city");
                 break;
             case 3:
-                road_text.setText("郊外");
+                road_text.setText("outskirts");
                 break;
         }
 
@@ -563,8 +563,8 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    if(advanced_func_key==0 || ! LSTR.advancedKeyCheck(advanced_func_key)){
-                       toast_msg( "请获取高级权限，激活城市、郊外 道路提醒模式");
-                       set_advanced_key();
+                       toast_msg( "Please obtain advanced permissions to activate the city, suburban road reminder mode");
+//                       set_advanced_key();
                        return;
                    }
                    road_type ++;
@@ -575,22 +575,22 @@ public class MainActivity extends AppCompatActivity {
                    int soundid;
                    switch (road_type){
                        case 1:
-                           road_text.setText("高速");
+                           road_text.setText("high speed");
                            alarm_mode = 1;
-                           toast_msg( "高速模式，检测更远，车道偏离预警启动");
+                           toast_msg( "High-speed mode, detection is farther, lane departure warning is activated");
                            play_sound(highway_voiceId);
                            break;
                        case 2:
-                           road_text.setText("城市");
+                           road_text.setText("city");
                            alarm_mode = 1;
-                           toast_msg( "城市模式，其他车辆左右进入，加塞，不需要非常严格判断非常远，判断近距离即可");
+                           toast_msg( "City mode, other vehicles enter left and right, stop, do not need to be very strict to judge very far, just judge short distance");
                            play_sound(cityroad_voiceId);
                            break;
                        case 3:
-                           road_text.setText("郊外");
+                           road_text.setText("outskirts");
                            alarm_mode = 2;
                            //person_detect_focus = 1;
-                           toast_msg( "郊外模式，人车少的地方，加强对周边区域判断，判断范围更宽，判断距离更远");
+                           toast_msg( "Outskirts mode, where there are few people and vehicles, strengthen the judgment of the surrounding area, the judgment range is wider, and the judgment distance is longer");
                            play_sound(outskirts_voiceId);
                            break;
                    }
@@ -606,16 +606,16 @@ public class MainActivity extends AppCompatActivity {
         TextView auto_adjust_direction = findViewById(R.id.txt_auto_adjust_direction);
         switch (auto_adjust_detect_area){
             case 0:
-                auto_adjust_direction.setText("无");
+                auto_adjust_direction.setText("no");
                 break;
             case 1:
-                auto_adjust_direction.setText("自动");
+                auto_adjust_direction.setText("automatic");
                 break;
             case 2:
-                auto_adjust_direction.setText("自动左右");
+                auto_adjust_direction.setText("Auto left and right");
                 break;
             case 3:
-                auto_adjust_direction.setText("自动前后");
+                auto_adjust_direction.setText("Automatic front and rear");
                 break;
         }
 
@@ -623,8 +623,8 @@ public class MainActivity extends AppCompatActivity {
                @Override
                public void onClick(View view) {
                    if(advanced_func_key==0 || ! LSTR.advancedKeyCheck(advanced_func_key)){
-                       toast_msg( "请获取高级权限，激活自动道路方向适应模式，可以防止振动改变安装方向的微弱变化");
-                       set_advanced_key();
+                       toast_msg( "Please obtain advanced permission to activate the automatic road direction adaptation mode, which can prevent the vibration from changing the slight change of the installation direction");
+//                       set_advanced_key();
                        return;
                    }
                    auto_adjust_detect_area ++;
@@ -635,21 +635,21 @@ public class MainActivity extends AppCompatActivity {
                    int soundid;
                    switch (auto_adjust_detect_area){
                        case 0:
-                           auto_adjust_direction.setText("无");
+                           auto_adjust_direction.setText("no");
                            play_sound(direction_off_voiceId);
-                           toast_msg("不自动适应道路方向，参数设为0 ");
+                           toast_msg("Do not automatically adapt to the road direction, the parameter is set to 0");
                            direction_center_x_offset = 0;
                            break;
                        case 1:
                            auto_adjust_direction.setText("自动");
                            play_sound(direction_on_voiceId);
-                           toast_msg( "自动道路方向适应模式，可以防止振动改变安装方向的微弱变化，40秒内道路连续报警会触发，大约20S调整一个像素");
+                           toast_msg( "Automatic road direction adaptation mode, which can prevent the vibration from changing the slight change of the installation direction. The road alarm will be triggered within 40 seconds, and it will be adjusted by one pixel in about 20 seconds.");
                            break;
                        case 2:
-                           auto_adjust_direction.setText("自动左右");
+                           auto_adjust_direction.setText("Auto left and right");
                            break;
                        case 3:
-                           auto_adjust_direction.setText("自动前后");
+                           auto_adjust_direction.setText("Automatic front and rear");
                            break;
                    }
 
@@ -663,19 +663,19 @@ public class MainActivity extends AppCompatActivity {
         TextView txt_person_focus = findViewById(R.id.txt_person_focus);
         switch (person_detect_focus){
             case 0:
-                txt_person_focus.setText("关闭");
+                txt_person_focus.setText("shut down");
                 break;
             case 1:
-                txt_person_focus.setText("开启");
+                txt_person_focus.setText("turn on");
                 break;
         }
 
         btnPersonDetectFocus.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
-                  toast_msg( "增强行人检测，在检测区域前方 左右侧附近的行人也会触发报警，特别适合夜间行车和通过人多路口");
+                  toast_msg( "Enhanced pedestrian detection, pedestrians near the left and right sides in front of the detection area will also trigger an alarm, especially suitable for driving at night and passing through multiple intersections");
                   if(advanced_func_key==0 || ! LSTR.advancedKeyCheck(advanced_func_key)){
-                      set_advanced_key();
+//                      set_advanced_key();
                       return;
                   }
                   person_detect_focus ++;
@@ -686,11 +686,11 @@ public class MainActivity extends AppCompatActivity {
                   int soundid ;
                   switch (person_detect_focus){
                       case 0:
-                          txt_person_focus.setText("普通");
+                          txt_person_focus.setText("shut down");
                           play_sound(person_focus_off_voiceId);
                           break;
                       case 1:
-                          txt_person_focus.setText("开启");
+                          txt_person_focus.setText("turn on");
                           toast_msg( "已开启");
                           play_sound(person_focus_on_voiceId);
                           break;
@@ -709,11 +709,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(advanced_func_key==0 || ! LSTR.advancedKeyCheck(advanced_func_key)){
-                    toast_msg( "请获取高级权限，低分辨率，运算速度更快");
-                    set_advanced_key();
+                    toast_msg( "Please obtain advanced permissions, low resolution, faster computing speed");
+//                    set_advanced_key();
                     return;
                 }
-                toast_msg("分辨率低，运算速度更快，反应越快，但可能降低一点识别准确率");
+                toast_msg("The resolution is low, the calculation speed is faster, and the response is faster, but it may reduce the recognition accuracy rate a little");
 
                 input_size_idx ++ ;
                 if (input_size_idx>2){
@@ -747,13 +747,13 @@ public class MainActivity extends AppCompatActivity {
                                          @Override
                                          public void onClick(View v) {
                                             checkCamera();
-                                             toast_msg( "授予相机权限后，请完全关闭APP 重新打开");
+                                             toast_msg( "After granting the camera permission, please completely close the App and reopen it");
                                          }
                                      });
         btnAdvanced_key.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                set_advanced_key();
+//                set_advanced_key();
             }
         });
         btnParam_setting.setLongClickable(true);
@@ -765,7 +765,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = userInfo.edit();
                 editor.putFloat("direction_center_x_offset", direction_center_x_offset);
                 editor.commit();
-                toast_msg("隐藏参数已经重置");
+                toast_msg("Hidden parameters have been reset");
                 return true;
             }
         });
@@ -820,8 +820,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(advanced_func_key==0 || ! LSTR.advancedKeyCheck(advanced_func_key)){
-                    toast_msg("请获取高级权限");
-                    set_advanced_key();
+                    toast_msg("Please obtain advanced permissions");
+//                    set_advanced_key();
                     return;
                 }
                 alarm_mode ++;
@@ -830,17 +830,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 switch (alarm_mode){
                     case 0:
-                        toast_msg("设置为静音模式");
+                        toast_msg("Set to silent mode");
                         break;
                     case 1:
                         play_alarm(1.0f);
-                        toast_msg("设置为普通模式");
+                        toast_msg("Set to normal mode");
                         break;
                     case 2:
-                        toast_msg("只关闭车道偏离警告提示音");
+                        toast_msg("Turn off only the lane departure warning tone");
                         break;
                     case 3:
-                        toast_msg("只关闭物体警告提示音");
+                        toast_msg("Turn off only the object warning sound");
                         break;
                 }
                 /*if(alarm_mode!=0){
@@ -983,26 +983,26 @@ public class MainActivity extends AppCompatActivity {
         btnRoadType= findViewById(R.id.roadType_btn);
         btnPhoto = findViewById(R.id.button);
         btnInputSize = findViewById(R.id.input_size_btn);
-        btnAbout = findViewById(R.id.about_btn);
-        btnAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("http://hayoou.com/adas");
-                Intent i = new Intent(Intent.ACTION_VIEW,uri);
-                i.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-            }
-        });
-        btnZhangying = findViewById(R.id.zhangying_btn);
-        btnZhangying.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Uri uri = Uri.parse("http://hayoou.com/zy");
-                Intent i = new Intent(Intent.ACTION_VIEW,uri);
-                i.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-            }
-        });
+//        btnAbout = findViewById(R.id.about_btn);
+//        btnAbout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Uri uri = Uri.parse("http://hayoou.com/adas");
+//                Intent i = new Intent(Intent.ACTION_VIEW,uri);
+//                i.setFlags(FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(i);
+//            }
+//        });
+//        btnZhangying = findViewById(R.id.zhangying_btn);
+//        btnZhangying.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Uri uri = Uri.parse("http://hayoou.com/zy");
+//                Intent i = new Intent(Intent.ACTION_VIEW,uri);
+//                i.setFlags(FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(i);
+//            }
+//        });
         //btnVideo = findViewById(R.id.btn_video);
         btnSetting = findViewById(R.id.btn_setting);
         viewFinder = findViewById(R.id.view_finder);
@@ -1268,13 +1268,13 @@ public class MainActivity extends AppCompatActivity {
                 total_fps = (total_fps == 0) ? fps : (total_fps + fps);
                 fps_count++;
                 String modelName = getModelName();
-                DateFormat df2 = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.CHINA);
-                DateFormat df8 = DateFormat.getTimeInstance(DateFormat.MEDIUM, Locale.CHINA);
+                DateFormat df2 = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.ENGLISH);
+                DateFormat df8 = DateFormat.getTimeInstance(DateFormat.MEDIUM, Locale.ENGLISH);
                 String date2 = df2.format(new Date());
                 String time4 = df8.format(new Date());
 
                 String outmsg=String.format(Locale.CHINESE,
-                        "哈友安全驾驶\nV1.2\n%s\n图像: %dx%d\n处理时间: %.3f s\n平均FPS: %.3f\n\n",
+                        "QWR Safe Drive Assist\n%s\nImage: %dx%d\nProcessing time: %.3f s\nAverage FPS: %.3f\n\n",
                         date2+"\n"+time4,  width,height, dur / 1000.0, (float) total_fps / fps_count);
                 outmsg += detect_msg;
                 tvInfo.setText(outmsg );
@@ -1773,7 +1773,7 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         for (int result : grantResults) {
             if (result != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "请允许通过摄像头权限", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please allow camera permission", Toast.LENGTH_SHORT).show();
                 //this.finish();
             }
         }
@@ -2060,8 +2060,10 @@ public class MainActivity extends AppCompatActivity {
             //String t = String.valueOf( new Date().getTime())+String.valueOf( (new Random().nextInt(10000)));
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setView(edits);
-            builder.setTitle( "高级功能，赞助获取激活码。 微信： hayoou2 ，请输入用户名和激活码：" );
-            builder.setPositiveButton("激活", new DialogInterface.OnClickListener() {
+//            builder.setTitle( "高级功能，赞助获取激活码。 微信： hayoou2 ，请输入用户名和激活码：" );
+            builder.setTitle( "Advanced features, sponsored to obtain an activation code. Please enter your username and activation code:" );
+
+            builder.setPositiveButton("Activation", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
@@ -2069,34 +2071,34 @@ public class MainActivity extends AppCompatActivity {
                     String active_key = edit2.getText().toString();
 
                     if(openidt.equals("") ){
-                        toast_msg("请输入用户名以便注册");
+                        toast_msg("Please enter your username to register");
                         return;
                     }
                     if(openidt.length()< 6 ){
-                        toast_msg("用户名过短");
+                        toast_msg("Username is too short");
                         return;
                     }
                     if(openidt.length()>30 ){
-                        toast_msg("用户名过长");
+                        toast_msg("Username is too long");
                         return;
                     }
 
                     openid = openidt;
 
                     if(active_key.equals("")){
-                        toast_msg("无效激活码");
+                        toast_msg("Invalid activation code");
                         return;
                     }
                     long testkey ;
                     try {
                         testkey = Long.parseLong(active_key);
                     }catch (Exception e){
-                        toast_msg("无效激活码");
+                        toast_msg("Invalid activation code");
                         return;
                     }
                     boolean isok = LSTR.advancedKeyCheck(testkey);
                     if(active_key.equals("") || ! isok){
-                        toast_msg("无效激活码");
+                        toast_msg("Invalid activation code");
                         return;
                     }
 
@@ -2116,24 +2118,24 @@ public class MainActivity extends AppCompatActivity {
                                         String resp = response.body().string();
                                         if (resp.equals("ok")){
                                             advanced_func_key = testkey;
-                                            toast_msg("激活完成，用户注册成功，激活码已配置");
+                                            toast_msg("Activation is complete, user registration is successful, and the activation code has been configured");
                                             SharedPreferences userInfo = getSharedPreferences("adas", MODE_PRIVATE);
                                             SharedPreferences.Editor editor = userInfo.edit();
                                             editor.putString("openid", openid);
                                             editor.putLong("advanced_func_key", advanced_func_key);
                                             editor.commit();
                                         }else if(resp.equals("max active count")){
-                                            toast_msg("激活失败，激活次数过多");
+                                            toast_msg("Activation fails，Too many activations");
                                         }else if(resp.equals("error key")){
-                                            toast_msg("激活失败，激活码已被使用");
+                                            toast_msg("Activation fails，Activation code has been used");
                                         }else{
-                                            toast_msg("激活失败，未知错误，请检查网络状态");
+                                            toast_msg("Activation fails，unknown error，Please check the network status");
                                         }
 
                                     }
 
                                 }catch(Exception e){
-                                    toast_msg("激活码检测失败，请检查网络状态");
+                                    toast_msg("Activation code detection failed，Please check the network status");
                                 }
                             }
                         }).start();
@@ -2142,7 +2144,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.cancel();
                 }
             });
-            builder.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+            builder.setNeutralButton("cancel", new DialogInterface.OnClickListener() {
 
                 public void onClick(DialogInterface dialog, int which) {
                     //Utils.openbrowser(Config.USER_PAGE_URL_PREFIX+"&from=ss&openid="+ Config.openid);
@@ -2166,7 +2168,7 @@ public class MainActivity extends AppCompatActivity {
             mResultView.setVisibility(View.GONE);
             btnPhoto.setVisibility(View.VISIBLE);
             btnInputSize.setVisibility(View.VISIBLE);
-            toast_msg("请将绿色水平参考线对准地平线，垂直线对准前方道路中间。");
+            toast_msg("Please align the green horizontal reference line with the horizon and the vertical line with the middle of the road ahead.");
 
             btnZhangying.setVisibility(View.VISIBLE);
             btnAbout.setVisibility(View.VISIBLE);
